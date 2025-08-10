@@ -1,7 +1,12 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
 
 // https://vite.dev/config/
-export default defineConfig({
-  plugins: [react()],
-})
+// vite.config.js
+export default {
+  server: {
+    allowedHosts: ["myllmmodel.com", "www.myllmmodel.com"],
+    host: true,
+    port: 4078, // or whatever you're using
+  },
+};
