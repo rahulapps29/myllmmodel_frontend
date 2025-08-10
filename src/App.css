@@ -1,0 +1,633 @@
+/*
+  styles.css — minimal Tailwind shim for MyLLMModelLanding.jsx
+  Purpose: Make the provided React component render correctly WITHOUT Tailwind.
+  Scope: Only utilities actually used in the component are implemented.
+  Notes:
+  • Responsive breakpoints: sm=640px, md=768px, lg=1024px
+  • Some complex Tailwind class names contain special chars; they’re escaped here.
+  • This is NOT a full Tailwind replacement—just enough to match the design.
+*/
+
+:root {
+  --bg: #0b0f17;
+  --text: #ffffff;
+  --muted-90: rgba(255, 255, 255, 0.9);
+  --muted-80: rgba(255, 255, 255, 0.8);
+  --muted-75: rgba(255, 255, 255, 0.75);
+  --muted-70: rgba(255, 255, 255, 0.7);
+  --muted-60: rgba(255, 255, 255, 0.6);
+  --muted-40: rgba(255, 255, 255, 0.4);
+  --border-10: rgba(255, 255, 255, 0.1);
+  --border-15: rgba(255, 255, 255, 0.15);
+  --border-20: rgba(255, 255, 255, 0.2);
+}
+
+/* Base & resets */
+* {
+  box-sizing: border-box;
+}
+html,
+body,
+#root {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Inter,
+    Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
+  background: var(--bg);
+  color: var(--text);
+}
+::selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: #000;
+}
+
+/* Typography scale (approximate Tailwind) */
+.text-2xl {
+  font-size: 1.5rem;
+  line-height: 2rem;
+}
+.text-3xl {
+  font-size: 1.875rem;
+  line-height: 2.25rem;
+}
+.text-4xl {
+  font-size: 2.25rem;
+  line-height: 2.5rem;
+}
+.text-5xl {
+  font-size: 3rem;
+  line-height: 1.1;
+}
+.text-6xl {
+  font-size: 3.75rem;
+  line-height: 1.05;
+}
+.text-lg {
+  font-size: 1.125rem;
+}
+.text-sm {
+  font-size: 0.875rem;
+}
+.text-xs {
+  font-size: 0.75rem;
+}
+.text-[11px] {
+  font-size: 11px;
+}
+.text-3xl {
+  font-size: 1.875rem;
+}
+
+.font-bold {
+  font-weight: 700;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.font-medium {
+  font-weight: 500;
+}
+.uppercase {
+  text-transform: uppercase;
+}
+.tracking-tight {
+  letter-spacing: -0.02em;
+}
+.tracking-wide {
+  letter-spacing: 0.05em;
+}
+
+/* Colors */
+.text-white {
+  color: var(--text);
+}
+.text-white\/90 {
+  color: var(--muted-90);
+}
+.text-white\/80 {
+  color: var(--muted-80);
+}
+.text-white\/75 {
+  color: var(--muted-75);
+}
+.text-white\/70 {
+  color: var(--muted-70);
+}
+.text-white\/60 {
+  color: var(--muted-60);
+}
+.text-white\/40 {
+  color: var(--muted-40);
+}
+.text-gray-900 {
+  color: #111827;
+}
+
+.bg-\[\#0b0f17\] {
+  background-color: #0b0f17;
+}
+.bg-white {
+  background-color: #ffffff;
+}
+.bg-black\/30 {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+.bg-black\/40 {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+.bg-white\/\[0\.04\] {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+.bg-white\/\[0\.06\] {
+  background-color: rgba(255, 255, 255, 0.06);
+}
+
+/* Fancy hero gradient (escaped class name) */
+.bg-\[radial-gradient\(ellipse_at_top,
+rgba\(52,
+211,
+153,
+0\.15\),
+transparent_50%\),
+radial-gradient\(ellipse_at_bottom,
+rgba\(36,
+141,
+237,
+0\.18\),
+transparent_50%\)\] {
+  background-image: radial-gradient(
+      ellipse at top,
+      rgba(52, 211, 153, 0.15),
+      transparent 50%
+    ),
+    radial-gradient(
+      ellipse at bottom,
+      rgba(36, 141, 237, 0.18),
+      transparent 50%
+    );
+}
+
+/* Layout & sizing */
+.min-h-screen {
+  min-height: 100vh;
+}
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.max-w-7xl {
+  max-width: 80rem;
+}
+.w-full {
+  width: 100%;
+}
+.h-8 {
+  height: 2rem;
+}
+.w-8 {
+  width: 2rem;
+}
+.min-h-\[160px\] {
+  min-height: 160px;
+}
+.max-w-2xl {
+  max-width: 42rem;
+}
+.max-w-3xl {
+  max-width: 48rem;
+}
+.max-w-\[60%\] {
+  max-width: 60%;
+}
+
+/* Display */
+.block {
+  display: block;
+}
+.hidden {
+  display: none;
+}
+.flex {
+  display: flex;
+}
+.grid {
+  display: grid;
+}
+.items-center {
+  align-items: center;
+}
+.items-start {
+  align-items: flex-start;
+}
+.items-end {
+  align-items: flex-end;
+}
+.justify-between {
+  justify-content: space-between;
+}
+.justify-center {
+  justify-content: center;
+}
+.text-right {
+  text-align: right;
+}
+
+/* Grid columns */
+.grid-cols-1 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.sm\:grid-cols-2 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.md\:grid-cols-2 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.md\:grid-cols-3 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.lg\:grid-cols-2 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.lg\:grid-cols-3 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+.lg\:grid-cols-4 {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+/* Spacing */
+.mt-1 {
+  margin-top: 0.25rem;
+}
+.mt-2 {
+  margin-top: 0.5rem;
+}
+.mt-3 {
+  margin-top: 0.75rem;
+}
+.mt-4 {
+  margin-top: 1rem;
+}
+.mt-5 {
+  margin-top: 1.25rem;
+}
+.mt-8 {
+  margin-top: 2rem;
+}
+.mb-2 {
+  margin-bottom: 0.5rem;
+}
+.mb-8 {
+  margin-bottom: 2rem;
+}
+.gap-1 {
+  gap: 0.25rem;
+}
+.gap-2 {
+  gap: 0.5rem;
+}
+.gap-3 {
+  gap: 0.75rem;
+}
+.gap-4 {
+  gap: 1rem;
+}
+.gap-5 {
+  gap: 1.25rem;
+}
+.gap-6 {
+  gap: 1.5rem;
+}
+
+.p-4 {
+  padding: 1rem;
+}
+.p-5 {
+  padding: 1.25rem;
+}
+.p-6 {
+  padding: 1.5rem;
+}
+.px-3 {
+  padding-left: 0.75rem;
+  padding-right: 0.75rem;
+}
+.px-4 {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+.px-5 {
+  padding-left: 1.25rem;
+  padding-right: 1.25rem;
+}
+.py-1\.5 {
+  padding-top: 0.375rem;
+  padding-bottom: 0.375rem;
+}
+.py-2 {
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+.py-2\.5 {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+.py-3 {
+  padding-top: 0.75rem;
+  padding-bottom: 0.75rem;
+}
+.py-12 {
+  padding-top: 3rem;
+  padding-bottom: 3rem;
+}
+.py-16 {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+.py-24 {
+  padding-top: 6rem;
+  padding-bottom: 6rem;
+}
+
+/* Positioning */
+.relative {
+  position: relative;
+}
+.absolute {
+  position: absolute;
+}
+.sticky {
+  position: sticky;
+}
+.inset-0 {
+  inset: 0;
+}
+.top-0 {
+  top: 0;
+}
+.z-30 {
+  z-index: 30;
+}
+
+/* Borders & radius */
+.border {
+  border-width: 1px;
+  border-style: solid;
+  border-color: var(--border-10);
+}
+.border-b {
+  border-bottom: 1px solid var(--border-10);
+}
+.border-white\/10 {
+  border-color: var(--border-10);
+}
+.border-white\/15 {
+  border-color: var(--border-15);
+}
+.border-white\/20 {
+  border-color: var(--border-20);
+}
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+.rounded-2xl {
+  border-radius: 1rem;
+}
+.rounded-full {
+  border-radius: 9999px;
+}
+
+/* Effects */
+.shadow-sm {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+.shadow {
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.2), 0 1px 2px rgba(0, 0, 0, 0.12);
+}
+.hover\:shadow-lg:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+.backdrop-blur {
+  backdrop-filter: blur(8px);
+}
+.backdrop-blur-sm {
+  backdrop-filter: blur(6px);
+}
+.supports-\[backdrop-filter\]\:bg-black\/30 {
+  background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* Visibility */
+.md\:flex {
+  display: none;
+}
+.hidden.md\:flex {
+  display: none;
+}
+
+/* Inputs */
+textarea,
+select,
+input {
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-15);
+  color: var(--text);
+  border-radius: 0.75rem;
+  padding: 0.5rem 0.75rem;
+  outline: none;
+}
+textarea:focus,
+select:focus,
+input:focus {
+  border-color: rgba(255, 255, 255, 0.35);
+}
+label {
+  color: var(--muted-70);
+}
+
+/* Buttons */
+button,
+.btn {
+  cursor: pointer;
+  border: 0;
+}
+.rounded-2xl {
+  border-radius: 1rem;
+}
+.rounded-lg {
+  border-radius: 0.5rem;
+}
+.rounded-xl {
+  border-radius: 0.75rem;
+}
+
+/* Common button styles used */
+.btn-white,
+.bg-white {
+  background: #fff;
+  color: #111827;
+}
+.btn-white:hover,
+.bg-white:hover {
+  filter: brightness(0.98);
+}
+.border-btn {
+  border: 1px solid var(--border-20);
+  color: #fff;
+  background: transparent;
+}
+.border-btn:hover,
+.hover\:bg-white\/10:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Utility helpers used by components */
+.whitespace-pre-wrap {
+  white-space: pre-wrap;
+}
+.underline {
+  text-decoration: underline;
+}
+.underline-offset-2 {
+  text-underline-offset: 2px;
+}
+
+/* Badges */
+.inline-flex {
+  display: inline-flex;
+}
+.items-center {
+  align-items: center;
+}
+.border-white\/15 {
+  border-color: var(--border-15);
+}
+.bg-white\/\[0\.04\] {
+  background-color: rgba(255, 255, 255, 0.04);
+}
+.px-2 {
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
+}
+.py-0\.5 {
+  padding-top: 0.125rem;
+  padding-bottom: 0.125rem;
+}
+
+/* Gradient logo square */
+.bg-gradient-to-br {
+  background-image: linear-gradient(
+    to bottom right,
+    var(--grad-from, #248ded),
+    var(--grad-to, #36e2b1)
+  );
+}
+.from-\[\#248DED\] {
+  --grad-from: #248ded;
+}
+.to-\[\#36E2B1\] {
+  --grad-to: #36e2b1;
+}
+
+/* Accessibility helpers used in rating dots */
+[aria-label] {
+  position: relative;
+}
+
+/* Links */
+a {
+  color: var(--muted-80);
+  text-decoration: none;
+}
+a:hover {
+  color: #fff;
+}
+
+/* Section wrapper (matches Section component padding) */
+section.mx-auto.w-full.max-w-7xl {
+  padding: 4rem 1rem;
+}
+
+/* Responsive overrides */
+@media (min-width: 640px) {
+  .sm\:px-6 {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  .sm\:text-3xl {
+    font-size: 1.875rem;
+    line-height: 2.25rem;
+  }
+}
+@media (min-width: 768px) {
+  .md\:text-6xl {
+    font-size: 3.75rem;
+    line-height: 1.05;
+  }
+  .md\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .md\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .md\:flex {
+    display: flex;
+  }
+  .hidden.md\:flex {
+    display: flex;
+  }
+}
+@media (min-width: 1024px) {
+  .lg\:px-8 {
+    padding-left: 2rem;
+    padding-right: 2rem;
+  }
+  .lg\:grid-cols-2 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  .lg\:grid-cols-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+  .lg\:grid-cols-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* Utility for subtle card styling used repeatedly */
+.card {
+  border: 1px solid var(--border-10);
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 1rem;
+  padding: 1.25rem;
+  backdrop-filter: blur(6px);
+}
+
+/* Buttons seen in the design */
+.button-solid {
+  background: #fff;
+  color: #111827;
+  border-radius: 1rem;
+  padding: 0.625rem 1.25rem;
+  font-weight: 500;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+.button-solid:hover {
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+}
+.button-ghost {
+  border: 1px solid var(--border-20);
+  color: #fff;
+  border-radius: 1rem;
+  padding: 0.625rem 1.25rem;
+}
+.button-ghost:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* Helper to replicate ".selection:bg-white/20" at the page root */
+.selection\:bg-white\/20 *::selection {
+  background: rgba(255, 255, 255, 0.2);
+  color: #000;
+}
